@@ -23,3 +23,22 @@ build/Release
 # Deployed apps should consider commenting this line out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
+
+
+
+##from mean.io
+.DS_Store
+.nodemonignore
+npm-debug.log
+.sass-cache/
+.bower-*/
+.idea/
+nbproject/
+node_modules/
+bower_components
+mean.iml
+test/coverage/
+modules/public/
+modules/views/
+/public/build/
+/nbproject/private/
