@@ -12,7 +12,8 @@ Running the app:
 
 Backend:
 
--Play framework
+-Play framework 2.3
 
 Running the app:
--play run starts the application in port 9000
+-Download play 2.3
+-Navigate to /backend and run command: activator run which starts the application in port 9000
