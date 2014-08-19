@@ -8,7 +8,7 @@ trait Model {
   /*
    * returns model by id
    */
-  def getById(id: Int, table: String) {
+  def getById(id: Long, table: String) = {
     
     val sqlQuery = SQL(
     f"""
@@ -18,7 +18,7 @@ trait Model {
     
     DB.withConnection {
       implicit c =>
-        val result: Boolean = sqlQuery.execute()
+        val restaurant = sqlQuery().map(row =>  row[String]("code") -> row[String]("name")).toList
     }
   }
 
@@ -26,14 +26,15 @@ trait Model {
    * Insert a model into db and return an id value if it was successful
    * Needs to be implemented in every model
    */
-  def insertIntoDB(model: Model)
+  def save():Option[Long]
 
   /*
    * Deletes object from db and returns amount of deleted lines
    */
-  def deleteFromDB(id: Int, table: String) {
+  def deleteFromDB(id: Long, table: String):Int = {
     DB.withConnection { implicit c =>
       val result: Int = SQL(f"delete from $table%s where id = $id%d").executeUpdate()
+      return result
     }
   }
 }
