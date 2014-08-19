@@ -35,7 +35,6 @@ class RestaurantTest extends Specification {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
         val restaurant = new Restaurant("rafla", "koirapolku 3", "helsinki", 40700, "08:00-:18:00")
         val id = restaurant.save()
-        restaurant.getById(id.get, "Restaurant") should not be (null)
         restaurant.deleteFromDB(id.get, "Restaurant") shouldEqual 1
       }
     }
